@@ -2,6 +2,27 @@
 
 A Python utility that converts long screenshots into printer-friendly A4 PDFs by splitting them into a 2-column grid layout. Perfect for converting long web pages, chat conversations, or code snippets into printable documents.
 
+## Example Input/Output
+
+### Input Screenshot
+![Example Input Screenshot](example/input.jpg)
+*Long screenshot that needs to be converted*
+
+### Output PDF Layout
+![Example Output PDF](example/output.jpg)
+*The same content split into a 2-column grid layout across multiple pages*
+
+Demonstrates how a long screenshot is:
+1. Automatically scaled to fit column width
+2. Split into equal segments
+3. Arranged in a 2-column grid:
+   ```
+   Page 1:  [Segment 1] [Segment 2]
+   Page 2:  [Segment 3] [Segment 4]
+   Page 3:  [Segment 5] [Segment 6]
+   ...and so on
+   ```
+
 ## Features
 
 🖼️ **Smart Screenshot Processing**
@@ -19,8 +40,8 @@ A Python utility that converts long screenshots into printer-friendly A4 PDFs by
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/screenshot-grid.git
-cd screenshot-grid
+git clone https://github.com/rastinder/screenshot-align.git
+cd screenshot-align
 ```
 
 2. Install dependencies:
@@ -73,18 +94,6 @@ For a screenshot of dimensions 358x6381:
 - Content is distributed across pages in 2 columns
 - Final PDF maintains readability and print quality
 
-## Output Preview
-
-Original screenshot dimensions will be preserved while being scaled to fit within A4 column width. For example, a screenshot of 358x6381 pixels will be:
-1. Scaled to fit A4 column width
-2. Split into ~7 segments
-3. Arranged across 4 pages in a 2-column grid
-4. Last page may contain a single segment if total is odd
-
-## License
-
-This project is open source and available under the MIT License.
-
 ## Contributing
 
 Contributions are welcome! Feel free to:
@@ -98,3 +107,7 @@ If you encounter any issues or have questions:
 1. Open an issue on GitHub
 2. Provide sample images if relevant
 3. Include error messages if applicable
+
+## License
+
+This project is open source and available under the MIT License.
