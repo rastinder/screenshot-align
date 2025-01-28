@@ -4,24 +4,61 @@ A Python utility that converts long screenshots into printer-friendly A4 PDFs by
 
 ## Example Input/Output
 
-### Input Screenshot
-![Example Input Screenshot](example/input.jpg)
-*Long screenshot that needs to be converted*
+### Input: Long Screenshot
+```
++------------------+
+|                  |
+|     Content      |
+|       1          |
+|                  |
+|     Content      |
+|       2          |
+|                  |
+|     Content      |
+|       3          |
+|                  |
+|     Content      |
+|       4          |
+|                  |
+|     Content      |
+|       5          |
+|                  |
+|     Content      |
+|       6          |
++------------------+
+```
 
-### Output PDF Layout
-![Example Output PDF](example/output.jpg)
-*The same content split into a 2-column grid layout across multiple pages*
+### Output: 2-Column Grid PDF
+```
+Page 1:
++------------------+------------------+
+|                  |                  |
+|     Content      |     Content      |
+|       1          |       2          |
+|                  |                  |
++------------------+------------------+
 
-Demonstrates how a long screenshot is:
-1. Automatically scaled to fit column width
-2. Split into equal segments
-3. Arranged in a 2-column grid:
-   ```
-   Page 1:  [Segment 1] [Segment 2]
-   Page 2:  [Segment 3] [Segment 4]
-   Page 3:  [Segment 5] [Segment 6]
-   ...and so on
-   ```
+Page 2:
++------------------+------------------+
+|                  |                  |
+|     Content      |     Content      |
+|       3          |       4          |
+|                  |                  |
++------------------+------------------+
+
+Page 3:
++------------------+------------------+
+|                  |                  |
+|     Content      |     Content      |
+|       5          |       6          |
+|                  |                  |
++------------------+------------------+
+```
+
+The script automatically:
+1. Scales your screenshot to fit the column width
+2. Splits it into equal segments
+3. Arranges segments in a 2-column grid layout across pages
 
 ## Features
 
@@ -80,18 +117,24 @@ The script will:
 - Preserves aspect ratio during scaling
 
 ### Grid Layout
-The script arranges the content in a 2-column grid pattern:
+Example with a screenshot of dimensions 358x6381:
 ```
-Page 1:  [Segment 1] [Segment 2]
-Page 2:  [Segment 3] [Segment 4]
-Page 3:  [Segment 5] [Segment 6]
-...and so on
+Original:                    PDF Pages:
++-------------+    Page 1:   +-------+-------+
+|    6381px   |             | Seg 1 | Seg 2 |
+|     high    |    Page 2:   +-------+-------+
+|             |             | Seg 3 | Seg 4 |
+|   358px     |    Page 3:   +-------+-------+
+|    wide     |             | Seg 5 | Seg 6 |
++-------------+    Page 4:   +-------+
+                           | Seg 7 |
+                           +-------+
 ```
 
-### Example Output
-For a screenshot of dimensions 358x6381:
-- Segments are created with height matching A4 page
-- Content is distributed across pages in 2 columns
+- Original screenshot is split into ~7 segments
+- Segments are distributed across 4 pages in 2 columns
+- Last page contains single segment if total is odd
+- Each segment is scaled to fit A4 column width
 - Final PDF maintains readability and print quality
 
 ## Contributing
